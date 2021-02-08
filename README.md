@@ -1,3 +1,3 @@
-# Vue.JS Quiz Application
+# Vue.JS Quiz 
 
 ### WIP
