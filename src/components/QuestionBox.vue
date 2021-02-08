@@ -11,14 +11,20 @@
     v-for="(answer, index) in answers" 
     :key="index"
     @click.prevent="selectAnswer(index)"
-    :class="[selectedIndex === index ? 'selected' : '']"
+    :class="answerClass(index)"
     >
     {{answer}}
     </b-list-group-item>
   </b-list-group>
       
 
-    <b-button variant="primary" href="#">Submit</b-button>
+    <b-button 
+    variant="primary"
+    @click="submitAnswer"
+    :disabled="selectedIndex === null || answered"
+    >
+    Submit
+    </b-button>
     <b-button @click="next" variant="success" href="#">Next</b-button>
   </b-jumbotron>
   </div>
@@ -30,12 +36,15 @@ import _ from 'lodash'
 export default {
   props: {
     currentQuestion: Object,
-    next: Function
+    next: Function,
+    increment: Function
     },
-    data() {
+    data: function() {
       return {
         selectedIndex: null,
-        shuffledAnswers: []
+        correctIndex: null,
+        shuffledAnswers: [],
+        answered: false
       }
     },
     computed: {
@@ -50,6 +59,7 @@ export default {
         immediate: true,
         handler(){
         this.selectedIndex = null
+        this.answered = false
         this.shuffleAnswers()
         }
       }
@@ -61,12 +71,42 @@ export default {
       shuffleAnswers() {
         let answers = [...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answer]
         this.shuffledAnswers = _.shuffle(answers)
+        this.correctIndex = this.shuffledAnswers.indexOf(this.currentQuestion.correct_answer)
+      },
+      submitAnswer() {
+        let isCorrect = false
+        if(this.selectedIndex === this.correctIndex){
+          isCorrect = true
+        }
+        this.answered = true
+        this.increment(isCorrect)
+      },
+      answerClass(index) {
+        let answerClass = ''
+
+        if (!this.answered && 
+        this.selectedIndex === index) {
+          answerClass ='selected'
+        } 
+        else if (this.answered && 
+        this.correctIndex === index) {
+          answerClass = 'correct'
+        }
+         else if (this.answered && 
+         this.selectedIndex === index && 
+         this.correctIndex !== index) {
+          answerClass = 'incorrect'
+        }
+        return answerClass
       }
     }
   }
 </script>
 
 <style scoped>
+.jumbotron{
+  margin-top:20px;
+}
 .list-group{
   margin-bottom:15px;
 }
