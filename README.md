@@ -1,4 +1,4 @@
-# VueJS, Quiz App using External API
+# VueJS, Quiz App using the OPENTDB API
 <img src="https://3lhowb48prep40031529g5yj-wpengine.netdna-ssl.com/wp-content/uploads/2019/10/logo-vuejs-min.png" height="124" width="248" alt="VueJS Logo"/>
 
 ## Brief
