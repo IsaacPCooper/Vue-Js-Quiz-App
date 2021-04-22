@@ -2,7 +2,7 @@
 <img src="https://3lhowb48prep40031529g5yj-wpengine.netdna-ssl.com/wp-content/uploads/2019/10/logo-vuejs-min.png" height="124" width="248" alt="VueJS Logo"/>
 
 ## Brief
-A VueJS Quiz SPA that uses an external, changable API to generate questions and answers.
+A VueJS Quiz SPA that uses an Quiz API to generate questions and answers.
 The API Can be found here: https://opentdb.com/
 
 
