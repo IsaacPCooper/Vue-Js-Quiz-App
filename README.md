@@ -13,6 +13,6 @@ The API Can be found here: https://opentdb.com/
 
 ## Tech Used:
 * [Visual Studio Code](https://code.visualstudio.com/) - Industry Standard IDE.
-* [NodeJS](https://nodejs.org/en/) - JsPDF
+* [NodeJS](https://nodejs.org/en/)
 * [Git](https://git-scm.com/) - Version Control
 * [VueJS](https://vuejs.org/) - JS Framework.
